@@ -1,0 +1,45 @@
+body{
+	background-color: #D1CACA;
+}
+
+#head{
+	color: #434D56;
+	text-decoration: underline;
+	font-weight: 900;
+}
+
+#subTitle{
+	color: #808080;
+	font-weight: bold;
+	display: inline;
+}
+
+input{
+	border-radius: 2em;
+	line-height: 1.5em;
+}
+
+#border{
+    border-radius: 2em;
+    margin: auto;
+    width: 42%;
+    border: 3px solid #808080;
+    padding: 30px;
+}
+
+#borderProc{
+    border-radius: 2em;
+    margin: auto;
+    width: 50%;
+    border: 3px solid #808080;
+    padding: 30px;
+}
+
+#subNoLine{
+	color: #808080;
+	font-weight: bold;
+}
+
+table,td{
+	border: .1em solid #06080F;
+}

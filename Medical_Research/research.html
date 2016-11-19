@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8"/>
+			<title>Research Form</title>
+			<link rel= "stylesheet" href = "research.css" title = "style" type = "text/css"/>
+		</head>
+
+		<body>
+			<div>
+			<h1>Reaserch Form</h1>
+			<div>
+				<p>
+				<fieldset>
+					<legend>General Information</legend>
+					<div>
+						Firstname: 	<input type="text" id="firstname" placeholder="Fist Name" class="name" required/>&nbsp;
+						Lastname:  	<input type="text" id="lastname"  placeholder="Last Name" class="name" required/>&nbsp;<br />
+					</div>
+					<p>
+						Phone: 		<input type="text" id="phoneFirstPart" placeholder="123" class="phone" required/> -
+									<input type="text" id="phoneSecondPart" placeholder="456" class="phone" required/> - 
+									<input type="text" id="phoneThirstPart" placeholder="7890" class="phone" required/>&nbsp;
+
+						Email		<input type="text" id="email" placeholder="something@funny.com" class="email" required/>
+					</p>
+				</fieldset>
+				</p>
+			</div>
+			<!-- firstname, lastname, phoneFirstPart, phoneSecondPart, phoneThirdPart, email, age, heightFeet, heightInches, weight, highBloodPressure, diabetes, glaucoma, asthma, none, period, studyType, firstFourDigits, secondFourDigits (these last two correspond to the study id), and comments. -->
+			<div>
+				<p>
+				<fieldset>
+					<legend>Research Study Data</legend>
+					<p>
+						<fieldset class="inner">
+							<legend>Age/Height/Weight</legend>
+							<div class="measureLable">Age:</div>	<input type="number" id="age" class="number" /> &nbsp;
+							
+							<div class="measureLable">Height:</div>	<input type="number" id="heightFeet" class="number"/> <div class="measure">Feet</div>
+									<input type="number" id="heightInches" class="number"/> <div class="measure">Inches</div> &emsp;
+
+							<div class="measureLable">Weight:</div> <input type="number" id="weight" class="number"/> <div class="measure">Pounds</div>
+						</fieldset>	
+					</p>
+
+					<p>
+						<fieldset class="inner">
+							<legend>Conditions</legend>
+							Which of the following conditions are present in your family? (Check al that apply)<br />
+
+							<input type="checkbox" id="highBloodPressure"/> <div class="sub">High Blood Pressure</div> &nbsp;
+							<input type="checkbox" id="diabetes"/> <div class="sub">Diabetes</div> &nbsp;
+							<input type="checkbox" id="glaucoma"/> <div class="sub">Glaucoma</div> &nbsp;
+							<input type="checkbox" id="asthma" /> <div class="sub">Asthma</div> &nbsp;
+							<input type="checkbox" id="none" checked="checked"/> <div class="sub">None</div>
+						</fieldset> 
+					</p>
+					
+					<p>
+						<fieldset class="inner">
+							<legend>Time Period</legend>
+							How long have you experinced any of the above conditions? <br />
+							<input type="radio" id="period" value="none"/> <nobr> <div class="sub"> Never</div> &nbsp;
+							<input type="radio" id="period" value="<1"  /> <nobr> <div class="sub">Less than a year</div>&nbsp;
+							<input type="radio" id="period" value="1-2" /> <nobr> <div class="sub">One to two years</div> &nbsp;
+							<input type="radio" id="period" value="2+"  /> <nobr> <div class="sub"> More than two years</div>
+						</fieldset>
+					</p>
+					
+					<p>
+						<fieldset class="inner">
+							<legend>Study Information</legend>
+							Which study are you taking part of? &nbsp;
+							<select id="studyType">
+								<option value="longTerm" selected="selected"> Long Term</option>
+								<option value="shortTerm">Short Term</option>
+							</select>
+
+							Assinged Study: <input type="text" id="firstFourDigits" placeholder="A###" class="id" /> -
+											<input type="text" id="secondFourDigits" placeholder="B###" class="id" />
+						</fieldset>
+					</p>
+
+					<p>
+						<fieldset class="inner">
+							<legend>Additional Information(Comments)</legend>
+							<textarea id="comments" placeholder="Additional family members can participate"></textarea>
+						</fieldset>
+					</p>
+				</fieldset>
+				</p>
+			</div>
+			<div>
+				<p>
+					<fieldset>
+						<input type="reset" value="Clear Form">
+						<input type="submit" value="Submit Information">
+					</fieldset>
+				</p>
+			</div>
+			</div>
+		</body>
+	
+	</html>

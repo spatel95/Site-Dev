@@ -1,0 +1,56 @@
+legend{
+	color: #A0522D;
+}
+
+input.phone{
+	width:2.75em;
+}
+
+input.name{
+	width: 7em;
+}
+
+input.number{
+	width: 2em;
+}
+
+input.id{
+	width: 3em;
+}
+
+input.email{
+	width: 20em;
+}
+.sub{
+	font-size: .9em;
+	display: inline;
+}
+
+.measure{
+	font-style: italic;
+	display: inline;
+}
+
+.measureLable{
+	font-weight: bold;
+	display: inline;
+}
+
+
+textarea{
+	height: 4em;
+	width: 40em;
+}
+
+h1{
+	text-decoration: underline;
+}
+
+fieldset{
+	border-radius: .75em;
+	width: 38em;
+}
+
+fieldset.inner{
+	width: 35em;
+}

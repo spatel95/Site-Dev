@@ -1,0 +1,19 @@
+html *{
+	color: #D5D6D8;
+}
+
+body{
+	background-color: #2B303B;
+}
+
+canvas{
+	border:.1em solid black;
+	background-color: #D5D6D8;
+}
+
+div.canvas{
+	text-align: center;
+}
+.buttons{
+	color: #363D43;
+}

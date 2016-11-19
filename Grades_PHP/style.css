@@ -1,0 +1,16 @@
+div.textHead{
+	font-weight: bold;
+	display: inline;
+}
+
+h2{
+	font-weight: bold;
+}
+table,td{
+	border: .1em solid black;
+}
+
+td.heading{
+	font-weight: bold;
+	text-align: center;
+}

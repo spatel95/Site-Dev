@@ -1,0 +1,67 @@
+body {
+ 	font-family: "Times New Roman", sans-serif; 
+	border: double;
+	padding: 1em;
+	background: url("background.JPG");				  
+}
+
+#header {
+	font-size: 200%;
+	color: #3F4C6B;
+	border: double;
+	padding-left: .15em;
+}
+
+
+#courseName {
+	padding-left: 8.75em;
+}
+
+#semester {
+ 	padding-left: 9em;
+}
+a:link {
+	color: blue;	
+}
+
+a:visited {
+	color:purple;
+}
+
+a:hover {
+	color: red;
+}
+
+a:active {
+	color: gray;
+}
+
+h2 {
+	color: black;
+}
+
+h3 {
+	color: black;
+}
+
+strong {
+	color: black;
+}
+
+
+ul {
+ 	color: black;
+	list-style-type: disc; 
+}
+
+.innerList {
+	list-style-type: lower-latin;
+}
+
+.outerListElement {
+	padding-bottom: 1em;
+}
+
+.centralized {
+    text-align: center;
+}

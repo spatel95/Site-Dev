@@ -1,0 +1,68 @@
+body{
+    background-image: url("../img/back.jpg");
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+}
+@font-face{
+    font-family:yellow_peas;
+    src: url("../dump/fonts/yellow_peas-webfont.ttf") format("truetype"),
+         url("../dump/fonts/yellow_peas-webfont.woff") format("woff"),
+         url("../dump/fonts/yellow_peas-webfont.woff2") format("woff2");
+}
+
+#yelloPeas{
+    /*font-family: */
+}
+
+#headStl{
+    text-align: center;
+    text-shadow: .03em .03em;
+    color: rgb(128, 128, 128);
+    font-family:yellow_peas;
+    font-size: 3em;
+    letter-spacing: .5em;
+}
+
+p{
+    text-align: center;
+    color: rgb(128,128,128);
+    
+}
+
+.clickHeader{
+    text-align: center;
+    color: rgb(128, 128, 128);
+    font-family: 'Lucida Console', 'Lucida Sans Typewriter', monaco, 'Bitstream Vera Sans Mono', monospace;
+    font-size: 1em;
+    letter-spacing: .15em;    
+}
+
+.clickButton{
+    /*background-image: url("../img/button1.jpg");*/
+    /*alignment-baseline: central;*/
+    background: #252323;
+    width: 15em;
+    height: 4em;
+    border:medium;
+    display:block;
+    margin: 0 auto;
+}
+
+#ftt{
+    text-align: center;
+    font-size:.5em;
+    color: rgb(128, 128, 128);
+    font-family: 'Lucida Console', 'Lucida Sans Typewriter', monaco, 'Bitstream Vera Sans Mono', monospace;
+}
+
+
+
+
+
+
+
+
+
+
+
+

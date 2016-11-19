@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+    
+    <html>
+        <head>
+            <title>        Bonga Bonga    </title>
+            <h1 id="headStl">     The Best Site Ever    </h1>
+            <link rel= "stylesheet" href = "../css/style.css" title = "style" type = "text/css"/>
+        </head>
+        
+        <body >
+            <article>
+                <h2 class="clickHeader">Please Click on the Following<br></br> to Find Some of the Most Useless Sites in the Internet</h2>   
+                <section>
+                    <table align="center">
+                        <thead><h3 id="ftt">Make sure your volume is up; all content is inoffensive </h3></thead>
+                        <tbody>
+                            <tr>
+                                <td> <input type="button" id="orderButton"   value="Top Sites" class="clickButton"/> <br></br></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="button" id="unOrderButton"   value="Honerable Mentions" class="clickButton"/> <br></br></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="button" id="nestButton"   value="Some Intresting Sites" class="clickButton"/> <br></br></td>
+                            </tr>
+                        </tbody>
+                        <tfoot> <h3 id="ftt"> Hope You Enjoyed It </h3> </tfoot>
+                    </table>
+                </section>
+            </article>
+            
+            <script onload="main()">
+                function main() {
+                    document.getElementById("orderButton").onclick = orderOL;
+                    document.getElementById("unOrderButton").onclick = orderUL;
+                    document.getElementById("nestButton").onclick = orderNL;
+                }
+                
+                function orderOL() {
+                    var nWin = window.open("order.html","_blank");
+                    nWin.focus();
+                }
+                function orderUL() {
+                    var nWin = window.open("unorderd.html","_blank");
+                    nWin.focus();
+                }
+                function orderNL() {
+                    var nWin = window.open("nested.html","_blank");
+                    nWin.focus();
+                }
+            </script>
+                                
+            
+            <!--<table>
+                <thead>  <tr> <td>tits</td> </tr> </thead>
+                <tfoot>  <tr> <td>ass</td> </tr>  </tfoot>
+                    <tbody>
+                        <tr>  <td>c1</td> <td>c2</td> </tr>
+                        <tr>  <td>c1</td> <td>c2</td> </tr>
+                        <tr>  <td>c1</td> <td>c2</td> </tr>
+                        <tr>  <td>c1</td> <td>c2</td> </tr>
+                    </tbody>
+            </table>
+            
+            <ol>
+                <li>l1</li>
+                <li>l2</li>
+                <li>l3</li>
+                <li>l4</li>
+                <li>l5</li>
+            </ol>
+            
+            <ul style="list-style: armenian">
+                <li>L1</li>
+                <li>L1</li>
+                <li>L1</li>
+                <li>L1</li>
+            </ul>
+            
+            <ul style="list-style: armenian">
+                <ul style="list-style: hebrew">t
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                </ul>
+                 <ul style="list-style: hiragana-iroha">t
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                </ul>
+                  <ul style="list-style: georgian">t
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                </ul>
+            </ul>-->
+            
+            <p>
+               
+                <br></br>
+                 <a href="http://leekspin.com/"> <img src="../img/nyan_cat.png" alt="MY CAT RAN AWAY!" width=200 /> </a>
+            </p>
+            
+            <p>
+                <a href="mobile.html"> mobile </a>
+            </p>
+            
+            <footer><p>This site is brought to you by Coke<sup>&reg;</sup></p><p>&nbsp;</p></footer>
+        </body>   
+    </html>

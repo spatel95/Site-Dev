@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel= "stylesheet" href = "style.css" title = "style" type = "text/css"/>
+		<title>Recorder</title>
+	</head>
+	<body>
+		<div class="canvas">
+
+			<canvas id="myCanvas"></canvas>
+			<br/>
+			<p>
+				<input type="button" id="clear" value="clear" class="buttons">
+				<input type="button" id="record" value="record" class="buttons">
+				<input type="button" id="stop" value="stop" class="buttons">
+				<input type="button" id="play" value="play [dont use]" class="buttons">
+			</p>
+
+			<p>
+				<input type="button" id="red" value="red" class="buttons">
+				<input type="button" id="green" value="green" class="buttons">
+				<input type="button" id="blue" value="blue" class="buttons">
+			</p>
+
+
+
+
+
+		</div>
+
+		<script type="text/javascript">
+
+		function XYPair (xIn,yIn){
+			this.x =xIn;
+			this.y = yIn; 		
+		}	
+
+		XYPair.prototype.toString = function(){
+			return ("("+this.x+","+this.y+")");
+		}
+
+		 function Utility (nameIn,yearIn,discriptionIn) {
+        	var name = nameIn;
+        	var year = yearIn;
+        	var description = discriptionIn;
+
+        	this.getName = function() {
+        		return nameIn;
+        	};
+
+        	this.getYear = function() {
+        		return year;
+        	};
+
+        	this.getDescription = function() {
+        		return description;
+        	};
+
+			this.setDescription = function(setDescriptionIn){
+        		description = setDescriptionIn;
+        	};  	
+        }			
+
+
+         
+        Utility.prototype = {
+        	constructor:Utility,
+        	printFields:function() {
+        		document.writeln("name: " + this.getName() + "<br>");
+        		document.writeln("year: " + this.getYear() + "<br>");
+        		document.writeln("description: " + this.getDescription() + "<br>");
+        	}  
+        };
+       
+        function Recorder (nameIn,yearIn,descriptionIn,myCan,myCon) {
+        	Utility.call(nameIn,yearIn,descriptionIn);
+        	var color = "#FF000D";
+        	var sideLength = 5;
+        	var coords = new Array();
+
+        	var myCanvas = myCan;
+        	var myContext = myCon;
+        	var num = 0;
+        	var intId=0;
+        	function draw(xPos, yPos,clr) {
+    			var context = myCanvas.getContext("2d");
+				
+    			myContext.fillStyle = clr;
+    			myContext.fillRect(xPos, yPos, sideLength, sideLength);
+    		}
+
+    		function getPosition(evt,canvas,clr){
+        		var scope = canvas.getBoundingClientRect();
+        		return {
+         			x: evt.clientX - scope.left,
+          			y: evt.clientY - scope.top,
+          			z: clr
+
+       			};
+        	}
+
+        	function captureMouseMovement (x,y,z){
+        		coords.push(new XYPair(x,y,z));
+        		// console.log(new XYPair(x,y))
+        	}
+
+      		function processMousePosition(evt) {	
+        		var position = getPosition(evt,myCanvas,color);
+        		captureMouseMovement(position.x,position.y,position.z);
+        		draw(position.x, position.y,position.z);
+        		// console.log(coords);
+        	}
+
+        	function clearRec(){
+        		newContext = myCanvas.getContext('2d');
+        		newContext.clearRect(0, 0, myCanvas.width, myCanvas.height);
+        	}
+        	function stRec () {
+        		
+        		myCanvas.onmousemove = null;
+        	}
+
+        	function dummyFunction () {
+        		
+        	}
+
+        	this.getCoords = function () {
+				return coords;
+        	}
+
+        	this.startRecord = function(){
+        		myCanvas.onmousemove = processMousePosition;
+        	}
+        	this.stopRecord = function(){
+        		myCanvas.onmousemove = null;
+        		 
+        	}
+
+        	this.clearRecordForever = function(){
+        		newContext = myCanvas.getContext('2d');
+        		newContext.clearRect(0, 0, myCanvas.width, myCanvas.height);
+        		coords = new Array();
+        	}
+
+        	this.playBack = function(){
+        		clearRec();
+        		stRec();
+        		num = 0;
+        		intDraw();
+        		// for (var i = 0; i < coords.length; i++) {
+        		// 	console.log(i)
+        		// 	// console.log("playBack BEFORE LOOP");
+        		// 	var dataPair = coords[i];
+        		// 	// draw(dataPair.x,dataPair.y);
+        		// 	// window.setTimeout(function(){console.log("playBack BEFORE LOOP");},100);
+
+        		// 	// setInterval(draw(dataPair.x,dataPair.y),100);
+        		// }
+        	}
+
+        	function intDraw() {
+        		
+        		var dataPair = coords[num];
+        		draw(dataPair.x,dataPair.y,dataPair.z);
+        		
+        		if (num<coords.length-1) {
+        			// console.log(num);
+        			console.log("FUCK "+num)
+        			intId = setInterval(intDraw,100);
+        			console.log("IntID"+intId);
+        			console.log("Array length: "+(coords.length-1));
+        			num++;
+        		}
+        		if (num>(coords.length-2)) {       			
+        			clearInterval(intId);
+        			console.log("FUCK YEAAAAAAAAAAAAAAA: "+intId);
+        		}
+
+        		clearInterval(2000);
+        	}
+
+        	this.setRed = function(){
+        		color = "#FF000D";
+        	}
+
+        	this.setBlue = function(){
+        		color = "#0E8A18";
+        	}
+
+
+			this.setGreen = function(){
+        		color = "#0004AC";
+        	}
+
+
+
+        }
+
+        Recorder.prototype = {
+        	constructor:Recorder,
+        	width:window.innerWidth *.9,
+        	height:window.innerHeight*.66,
+        };
+
+
+        
+		main();
+
+		function main() {
+			var canvas = document.getElementById('myCanvas');
+			var recorder = new Recorder("Recorder",2016,"Records your mouse movement",canvas,canvas.getContext('2d'));
+
+			canvas.width  = recorder.width;
+			canvas.height = recorder.height;
+
+			document.getElementById('record').onclick =recorder.startRecord;
+			document.getElementById('stop').onclick = recorder.stopRecord;
+			document.getElementById('clear').onclick = recorder.clearRecordForever;
+
+			document.getElementById('play').onclick = recorder.playBack;
+
+			document.getElementById('red').onclick = recorder.setRed;
+			document.getElementById('green').onclick = recorder.setGreen;
+			document.getElementById('blue').onclick = recorder.setBlue;
+        }       
+		</script>
+	</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+	<html>
+		<head>
+			<meta charset="UTF-8"/>
+			<title>TITS</title>
+			
+			<style>
+				body{
+					background-color: #FFF1CC;
+				}
+				h1{
+					text-decoration: underline;
+				}
+				#img{
+					border:border: .1em solid #06080F;
+				}
+
+				input[type=number]{
+					width:4em;
+				}
+			</style>
+
+		</head>
+
+		<body onload="main()">
+			<h1>Viewer</h1>	
+			<div id="img"><img src="InitialImage.jpg" alt="img" id="image" width="500em" height="350em"></div>
+
+			<hr>
+			<form>
+				<p><div>Photos' Folder: &nbsp; <input type="text" id="imageURL" name="imageURL" value="umcp/" /></div></p>
+				
+				<p><div>Common Name:&nbsp; <input type="text" id="commonName" name="commonName" value="college" /></div></p>
+
+				<p> 
+					<div>
+					
+					Start Photo Number:&nbsp; <input type="number" id="startIndex" name="startIndex" min="1" value="1" /> &nbsp;&nbsp;
+					End Photo Number:&nbsp; <input type="number" id="endIndex" name="endIndex" min="1"value="1" />
+
+					</div>
+				</p>
+
+				<p>
+					<input type="button" id="slideShowButton" name="SlideShow" value="Slide Show" />
+					<input type="button" id="randomButton" name="Random" value="Random Slide Show" />
+					<input type="button" id="prvSlideButton" name="PrvSlid" value="Previous Slide" />
+					<input type="button" id="nextSlideButton" name="NextSlide" value="Next Slide" />
+				</p>
+				<p>
+					<input type="button" id="autoStartButton" name="AutoSlideShow" value="Auto Slide Show" />
+					<input type="button" id="autoRandomButton" name="AutoRandom" value="Auto Random Slide Show" />
+					<input type="button" id="autoStopButton" name="AutoStop" value="Stop Auto Show" />
+				</p>
+				<p>
+					<input type="reset"/>
+				</p>
+			</form>
+
+			<script type="text/javascript">
+				"use strict";
+
+					var curIndex = 0;
+					var intID = 0;
+					var photoArray;
+					function getArrayPhotoNames(){
+
+						var urlTemplet = document.getElementById('imageURL').value+document.getElementById('commonName').value;
+						var stIndex = parseInt(document.getElementById("startIndex").value);
+						var edIndex = parseInt(document.getElementById('endIndex').value);
+						var length = (edIndex - stIndex)+1;
+						var arr = new Array();
+						if(isInvalidRange(stIndex,edIndex)){
+							arr[0] = "InitialImage.jpg";
+							return arr;
+						}
+						for (var i = 0; i < length;i++) {
+							arr[i] = urlTemplet+(stIndex++)+".jpg";
+						}
+						return arr;
+					}
+
+					function isInvalidRange (start,end) {
+						if(start > end){
+							alert("Invalid Numbers");
+							return true;
+						}
+						return false;
+					}
+
+					function prtArr(arr){
+						for (var i = arr.length - 1; i >= 0; i--) {
+							document.writeln(arr[i]+"<br />");	
+						}
+					}
+
+					function slideClick () {
+						photoArray = getArrayPhotoNames();
+						setPic(0);
+					}
+
+					/*The Fisher-Yates algorithm*/
+					function randomize(array){
+
+						for (var i = array.length-1 ; i > 0; i--) {
+							var rand = Math.floor(Math.random() * (i+1));
+							var tmp =  array[i];
+							array[i] = array[rand];
+							array[rand] = tmp;
+						}
+						return array;
+					}
+
+					function randomClick(){
+						photoArray = getArrayPhotoNames();
+						
+						photoArray = randomize(photoArray); 	
+						console.log(photoArray);
+						setPic(0);
+						curIndex = 0;
+					}
+
+					function nextClick () {
+						curIndex++;
+						if(outOfBoundsCheck("next")){
+							setPic(curIndex);
+							
+						}else{
+							curIndex = 0;
+							setPic(curIndex);
+						}
+					}
+
+					function prvClick () {
+						curIndex--;
+						console.log("Current Index: "+curIndex);
+						if(outOfBoundsCheck("previous")){
+							setPic(curIndex)
+							
+						}else{
+							curIndex = photoArray.length-1;
+							setPic(curIndex);
+						}
+					}
+
+					function setPic(index) {
+						document.getElementById("image").src = photoArray[index];
+					}
+
+					function outOfBoundsCheck(dir) {
+						
+						if(dir==="next"&& curIndex >= photoArray.length){
+							return false;
+						} else if(dir==="previous" && curIndex < 0){
+							return false;
+						}else{
+							return true;
+						}
+					}
+
+					function autoStart(){
+						stopInterval();
+						slideClick();
+						intID = setInterval("nextClick()",1000);
+					}
+
+					function autoRandom(){
+						stopInterval();
+						randomClick();
+						intID = setInterval("nextClick()",1000);
+					}
+
+					function autoStop () {
+
+						stopInterval();
+					}
+
+					function stopInterval () {
+						if(intID != 0){
+							clearInterval(intID);
+						}
+					}
+
+
+
+				function main(){
+					document.getElementById("slideShowButton").onclick= slideClick;
+					document.getElementById("nextSlideButton").onclick = nextClick;
+					document.getElementById("prvSlideButton").onclick = prvClick;
+					document.getElementById("randomButton").onclick = randomClick;
+					document.getElementById("autoStartButton").onclick = autoStart;
+					document.getElementById("autoRandomButton").onclick = autoRandom;
+					document.getElementById("autoStopButton").onclick = autoStop;
+				}
+
+			</script>
+		</body>
+
+	</html>
+
